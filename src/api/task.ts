@@ -1,11 +1,19 @@
-import { Task } from "../interfaces/task.interfaces";
+import { CreateTask } from "../interfaces/task.interfaces";
 
-const API_ENDPOINT = 'http://localhost:3000/tasks'; 
+const API_ENDPOINT = 'http://localhost:3000/api'; 
 
-export const createTaskRequest = (task: Task) => 
-    fetch(`${API_ENDPOINT}/create`, {
+export const createTaskRequest = async (task: CreateTask) => 
+    await fetch(`${API_ENDPOINT}/tasks/create`, {
         method: 'POST',
         body: JSON.stringify(task),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+export const getAllTasks = async () => 
+    await fetch(`${API_ENDPOINT}/tasks`,{
+        method: 'GET',
         headers: {
             'Content-Type': 'application/json'
         }

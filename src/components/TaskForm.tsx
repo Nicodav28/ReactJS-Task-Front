@@ -5,7 +5,8 @@ function TaskForm() {
   const [task, setTask] = useState({
     title: "",
     description: "",
-    priority: "",
+    priority: undefined,
+    status: undefined,
   });
 
   const handleChange = (
@@ -46,16 +47,26 @@ function TaskForm() {
           defaultValue=""
         >
           <option disabled={true} value="">
-            --Choose an option--
+            --Choose a priority--
           </option>
           <option value="HIGH">High</option>
           <option value="MEDIUM">Medium</option>
           <option value="LOW">Low</option>
         </select>
-        {/* <label htmlFor="" className="inline-flex items-center gap-x-2">
-          <input type="checkbox" className="h-5 w-5 text-indigo-600" />
-          <span>Done</span>
-        </label> */}
+
+        <select
+          className="border-2 border-gray-700 p-2 rounded-lg bg-zinc-800 block w-full my-2"
+          name="status"
+          onChange={handleChange}
+          defaultValue=""
+        >
+          <option disabled={true} value="">
+            --Choose a status--
+          </option>
+          <option value="PENDING">Pending</option>
+          <option value="IN_PROGRESS">In Progress</option>
+          <option value="DONE">Done</option>
+        </select>
         <button className="bg-indigo-500 px-3 block py-2 w-full">Save</button>
       </form>
     </div>
